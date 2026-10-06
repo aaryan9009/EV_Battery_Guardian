@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: 22 31 40; --ink-soft: 98 112 126;
+  --surface: 244 247 249; --surface-raised: 255 255 255; --line: 224 230 235;
+  --brand: 15 140 110; --brand-soft: 224 245 238;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: 232 238 243; --ink-soft: 150 165 178;
+    --surface: 14 19 24; --surface-raised: 22 29 36; --line: 38 48 58;
+    --brand: 52 200 160; --brand-soft: 18 52 44;
+  }
+}
+body { @apply bg-surface text-ink font-sans antialiased; }
+
+@layer components {
+  .card { @apply rounded-xl border border-line bg-surface-raised p-5 shadow-sm; }
+  .label { @apply mb-1 block text-xs font-medium uppercase tracking-wide text-ink-soft; }
+  .input { @apply w-full rounded-lg border border-line bg-surface px-3 py-2 text-sm text-ink outline-none focus:border-brand focus:ring-2 focus:ring-brand/30 disabled:opacity-60; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-primary { @apply btn bg-brand text-white hover:opacity-90; }
+  .btn-ghost { @apply btn border border-line bg-surface-raised text-ink hover:bg-surface; }
+  .btn-danger { @apply btn border border-red-500/40 text-red-600 hover:bg-red-500/10 dark:text-red-400; }
+  .h-section { @apply mb-3 text-sm font-semibold text-ink; }
+}
+input[type="range"] { accent-color: rgb(var(--brand)); }
